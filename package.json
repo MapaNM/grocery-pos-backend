@@ -1,23 +1,25 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Grocery POS Backend",
   "main": "server.js",
   "scripts": {
-  "start": "node server.js",
-  "dev": "nodemon server.js"
-},
+    "dev": "nodemon -r dotenv/config server.js dotenv_config_path=.env.development",
+    "start": "node -r dotenv/config server.js dotenv_config_path=.env.production",
+    "seed:dev": "node -r dotenv/config seed.js dotenv_config_path=.env.development",
+    "seed:prod": "node -r dotenv/config seed.js dotenv_config_path=.env.production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "express-validator": "^7.0.1",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.0.0"
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
