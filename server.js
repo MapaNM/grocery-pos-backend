@@ -14,7 +14,7 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 
 // Import routes
 const authRoutes = require('./routes/auth');
@@ -39,3 +39,14 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+// CORS Configuration
+const corsOptions = {
+  origin: [
+    'http://localhost:3000',                    // Keep for local testing
+    'https://grocery-pos-frontend.vercel.app',  // Replace with YOUR Vercel URL
+  ],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
