@@ -8,7 +8,6 @@ connectDB();
 
 const app = express();
 
-// Define corsOptions inline
 const corsOptions = {
   origin: [
     'http://localhost:3000',
@@ -17,8 +16,8 @@ const corsOptions = {
   credentials: true,
 };
 
-app.use(express.json());
-app.use(cors(corsOptions));
+app.use(cors(corsOptions));        // ✅ CORS first
+app.use(express.json());           // ✅ then body parser
 
 const authRoutes = require('./routes/auth');
 const productRoutes = require('./routes/products');
